@@ -16,6 +16,7 @@
 // @version     49
 // @connect     www.rottentomatoes.com
 // @connect     algolia.net
+// @connect     www.fandango.com
 // @connect     flixster.com
 // @connect     imdb.com
 // @match       https://www.rottentomatoes.com/
