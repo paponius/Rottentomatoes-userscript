@@ -13,7 +13,7 @@
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js
 // @license     GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // @icon        https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/72x72/1F345.png
-// @version     48
+// @version     49
 // @connect     www.rottentomatoes.com
 // @connect     algolia.net
 // @connect     flixster.com
@@ -161,11 +161,15 @@ function parseLDJSON (keys, condition) {
       if (scripts[i].innerText in parseLDJSONCache) {
         jsonld = parseLDJSONCache[scripts[i].innerText]
       } else {
+        let text
         try {
-          jsonld = JSON.parse(scripts[i].innerText)
+          text = scripts[i].innerText
+          text = text.replace(/^\/\*.*\*\//gm, '') // Replace comment lines
+          jsonld = JSON.parse(text)
           parseLDJSONCache[scripts[i].innerText] = jsonld
         } catch (e) {
           parseLDJSONCache[scripts[i].innerText] = null
+          console.warn(e, text)
           continue
         }
       }
@@ -614,7 +618,7 @@ async function handleAlgoliaResponse (response) {
     arr[0] = await addFlixsterEMS(arr[0])
   }
 
-  if (arr) {
+  if (arr.length > 0) {
     showMeter(arr, new Date(response.time))
   } else {
     console.debug(`${scriptName}: No results for ${current.query}`)
@@ -1036,11 +1040,20 @@ const sites = {
   },
   letterboxd: {
     host: ['letterboxd.com'],
-    condition: () => unsafeWindow.filmData && 'name' in unsafeWindow.filmData,
+    condition: () => parseLDJSON('@type') === 'Movie',
     products: [{
       condition: Always,
       type: 'movie',
-      data: () => [unsafeWindow.filmData.name, unsafeWindow.filmData.releaseYear]
+      data: () => {
+        const ld = parseLDJSON(['name', 'releasedEvent'], (j) => (j['@type'] === 'Movie'))
+        let year = null
+        try {
+          year = parseInt(ld[1][0].startDate.substring(0, 4))
+        } catch (e) {
+          console.error(e)
+        }
+        return [ld[0], year]
+      }
     }]
   },
   TVmaze: {
