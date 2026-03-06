@@ -733,7 +733,7 @@ const sites = {
             const imdbID = document.location.pathname.match(/\/title\/(\w+)/)[1]
             const homePageUrl = 'https://www.imdb.com/title/' + imdbID + '/?ref_=nv_sr_1'
             const langM = document.cookie.match(/lc-main=([^;]+)/)
-            const langBefore = langM ? langM[0] : ';expires=Thu, 01 Jan 1970 00:00:01 GMT'
+            const langBefore = langM ? langM[1] : ';expires=Thu, 01 Jan 1970 00:00:01 GMT'
             document.cookie = 'lc-main=en-US'
             const response = await asyncRequest({
               url: homePageUrl,
@@ -801,7 +801,7 @@ const sites = {
             const homePageUrl = 'https://www.imdb.com/title/' + imdbID + '/?ref_=nv_sr_1'
             // Set language cookie to English, request current page in English, then restore language cookie or expire it if it didn't exist before
             const langM = document.cookie.match(/lc-main=([^;]+)/)
-            const langBefore = langM ? langM[0] : ';expires=Thu, 01 Jan 1970 00:00:01 GMT'
+            const langBefore = langM ? langM[1] : ';expires=Thu, 01 Jan 1970 00:00:01 GMT'
             document.cookie = 'lc-main=en-US'
             const response = await asyncRequest({
               url: homePageUrl,
