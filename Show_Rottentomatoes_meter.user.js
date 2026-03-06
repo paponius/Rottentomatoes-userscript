@@ -616,7 +616,8 @@ async function handleAlgoliaResponse (response) {
 
   if (arr.length > 0 && arr[0].meterScore) {
     // Get more details for first result
-    arr[0] = await addFlixsterEMS(arr[0])
+    // disabled: flixter is gone
+    // arr[0] = await addFlixsterEMS(arr[0])
   }
 
   if (arr.length > 0) {

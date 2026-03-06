@@ -1,0 +1,75 @@
+// ==UserScript==
+// @name        Show Rottentomatoes meter
+// @description Show Rotten Tomatoes score on imdb.com, metacritic.com, letterboxd.com, BoxOfficeMojo, serienjunkies.de, Amazon, Google Play, allmovie.com, Wikipedia, themoviedb.org, movies.com, tvmaze.com, tvguide.com, followshows.com, thetvdb.com, tvnfo.com, save.tv
+// @namespace   cuzi
+// @updateURL   https://openuserjs.org/meta/cuzi/Show_Rottentomatoes_meter.meta.js
+// @grant       GM_xmlhttpRequest
+// @grant       GM_setValue
+// @grant       GM_getValue
+// @grant       unsafeWindow
+// @grant       GM.xmlHttpRequest
+// @grant       GM.setValue
+// @grant       GM.getValue
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js
+// @license     GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
+// @icon        https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/72x72/1F345.png
+// @version     49
+// @connect     www.rottentomatoes.com
+// @connect     algolia.net
+// @connect     www.fandango.com
+// @connect     flixster.com
+// @connect     imdb.com
+// @match       https://www.rottentomatoes.com/*
+// @match       https://play.google.com/store/movies/details/*
+// @match       https://www.amazon.ca/*
+// @match       https://www.amazon.co.jp/*
+// @match       https://www.amazon.co.uk/*
+// @match       https://smile.amazon.co.uk/*
+// @match       https://www.amazon.com.au/*
+// @match       https://www.amazon.com.mx/*
+// @match       https://www.amazon.com/*
+// @match       https://smile.amazon.com/*
+// @match       https://www.amazon.de/*
+// @match       https://smile.amazon.de/*
+// @match       https://www.amazon.es/*
+// @match       https://www.amazon.fr/*
+// @match       https://www.amazon.in/*
+// @match       https://www.amazon.it/*
+// @match       https://www.imdb.com/title/*
+// @match       https://www.imdb.com/*/title/*
+// @match       https://www.serienjunkies.de/*
+// @match       http://www.serienjunkies.de/*
+// @match       https://www.boxofficemojo.com/movies/*
+// @match       https://www.boxofficemojo.com/release/*
+// @match       https://www.allmovie.com/movie/*
+// @match       https://en.wikipedia.org/*
+// @match       https://www.fandango.com/*
+// @match       https://www.themoviedb.org/movie/*
+// @match       https://www.themoviedb.org/tv/*
+// @match       https://letterboxd.com/film/*
+// @match       https://letterboxd.com/film/*/image*
+// @match       https://www.tvmaze.com/shows/*
+// @match       https://www.tvguide.com/tvshows/*
+// @match       https://followshows.com/show/*
+// @match       https://thetvdb.com/series/*
+// @match       https://thetvdb.com/movies/*
+// @match       https://tvnfo.com/tv/*
+// @match       https://www.metacritic.com/movie/*
+// @match       https://www.metacritic.com/tv/*
+// @match       https://www.nme.com/reviews/*
+// @match       https://itunes.apple.com/*
+// @match       https://epguides.com/*
+// @match       https://www.epguides.com/*
+// @match       https://www.cc.com/*
+// @match       https://www.amc.com/*
+// @match       https://www.amcplus.com/*
+// @match       https://rlsbb.ru/*/
+// @match       https://www.sho.com/*
+// @match       https://www.gog.com/*
+// @match       https://psa.wf/*
+// @match       https://www.save.tv/*
+// @match       https://www.wikiwand.com/*
+// @match       https://trakt.tv/*
+//
+// @require        file://H:\Projects\JS\_forks_\Rottentomatoes-userscript\Show_Rottentomatoes_meter.user.js
+// ==/UserScript==
